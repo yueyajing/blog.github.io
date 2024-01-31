@@ -4,7 +4,81 @@
   <meta charset="UTF-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <title>Bootstrap Page</title>  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"> 
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <style>
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .img-responsive {  
+    max-width: 200px;  
+    height: auto;  
+  }  
+  </style>
+  <script>
+  //   fetch('pages/e.json')
+  // .then(response => response.json())
+  // .then(data => {
+  //   const postList = document.getElementById('post-list');
+  //   // 生成列表项
+  //   data.forEach(page => {
+  //     const li = document.createElement('li');
+  //     li.className = 'list-group-item';
+  //     const a = document.createElement('a');
+  //     a.textContent = page.title;
+  //     a.href = page.url;
+  //     li.appendChild(a);
+  //     postList.appendChild(li);
+  //   });
+  // })
+  // .catch(error => console.error('Error:', error));
+
+  // 获取JSON文件
+  fetch('pages/e.json')
+  .then(response => response.json())
+  .then(data => {
+    const postList = document.getElementById('post-list');
+    // 清空列表
+    postList.innerHTML = '';
+
+    // 生成列表项
+    data.forEach(page => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item';
+      li.style.display = 'flex'; // 添加 flex 布局样式
+
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'image-container';
+      imageContainer.style.flex = '1'; // 设置 flex: 1
+      const img = document.createElement('img');
+      img.src = page.image;
+      img.alt = 'Image Description';
+      img.className = 'img-responsive';
+      imageContainer.appendChild(img);
+      li.appendChild(imageContainer);
+
+      const textContainer = document.createElement('div');
+      textContainer.id = 'txt1';
+      textContainer.className = 'text-container';
+      textContainer.style.flex = '1'; // 设置 flex: 1
+      textContainer.textContent = page.title;
+      li.appendChild(textContainer);
+
+      li.addEventListener('click', () => {
+        window.location.href = page.url;
+      });
+
+      postList.appendChild(li);
+    });
+  })
+  .catch(error => console.error('Error:', error));
+
+
+
+  </script>
 </head>  
 <body>  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">  
@@ -13,15 +87,15 @@
       <span class="navbar-toggler-icon"></span>  
     </button>  
     <div class="collapse navbar-collapse" id="navbarNav">  
-      <ul class="navbar-nav">  
+       <ul class="navbar-nav mx-auto">  <!--navbar-nav -->
         <li class="nav-item active">  
-          <a class="nav-link" href="#">Home</a>  
+          <a class="nav-link" href="pages/a1.html">Home</a>  
         </li>  
         <li class="nav-item">  
-          <a class="nav-link" href="#">About</a>  
+          <a class="nav-link" href="pages/a2.html">About</a>  
         </li>  
         <li class="nav-item">  
-          <a class="nav-link" href="#">Contact</a>  
+          <a class="nav-link" href="pages/a3.html">Contact</a>  
         </li>  
       </ul>  
     </div>  
@@ -35,16 +109,17 @@
       </div>  
       <div class="col-md-6">  
         <h2>Latest Posts</h2>  
-        <ul class="list-group">  
-          <li class="list-group-item">Post 1</li>  
-          <li class="list-group-item">Post 2</li>  
-          <li class="list-group-item">Post 3</li>  
-	<li class="list-group-item">Post 3</li>  
-	<li class="list-group-item">Post 3</li>  
-	<li class="list-group-item">Post 3</li>  
-	<li class="list-group-item">Post 3</li>  
-	<li class="list-group-item">Post 3</li>  
-	<li class="list-group-item">Post 3</li>  
+        <ul id="post-list" class="list-group">  
+           
+          <li id="li1" class="list-group-item">
+            <div class="image-container">
+              <img src="" alt="Image Description" class="img-responsive">
+            </div>
+            <div  class="text-container">
+              post 1
+            </div>
+          </li>  
+          
         </ul>  
       </div>  
     </div>  
@@ -56,7 +131,7 @@
     </div>  
   </footer>  
     
-  <script src="resources\js\jquery-3.6.0.min.js"></script>  
+  <script src="resources\js\jquery.min.js"></script>  
   <script src="resources\js/bootstrap.min.js"></script>  
 </body>  
 </html>
