@@ -8,14 +8,91 @@
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"> 
   <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
   <script type="text/javascript" src="../resources/js/xlsx.full.min.js"></script>
+  <script src="../resources/js/jquery.min.js"></script> 
+  <style>
+    .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-width: 100%;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.left-text, .right-text {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.text {
+  margin: 10px 0;
+  background-color: lightblue; /* 调整背景颜色 */
+}
+
+.right-text {
+  background-color: lightgreen; /* 调整背景颜色 */
+}
+
+  </style>
+  <script>
+    $(document).ready(function() {
+  $("#changeVideoBtn").click(function() {
+    // 更换视频
+    $("#videoPlayer").attr("src", "../img/songs/下雪了.mp4");
+
+    // 更改左右侧文字
+    $("#leftText").text("新的左侧文字");
+    $("#rightText").text("新的右侧文字");
+  });
+});
+
+  </script>
 </head>  
 <body>  
-    <div>a2</div> 
-    <video src="ima/xxx.mov" width="300px" heigth="300px" controls="controls" autoplay></video>
-
+  <div class="container">
+    <div class="left-text" id="leftText">
+      <div class="text"><button id="changeVideoBtn">更换视频</button></div>
+      <div class="text">左侧文字2</div>
+      <div class="text">左侧文字3</div>
+    </div>
+    <div class="video-container">
+      <video src="../img/songs/下雪了.mp4" controls autoplay id="videoPlayer"></video>
+    </div>
+    <div class="right-text" id="rightText">
+      <div class="text">右侧文字1</div>
+      <div class="text">右侧文字2</div>
+      <div class="text">右侧文字3</div>
+    </div>
+  </div>
+  
+  
     
-  <script src="../resources/js/jquery.min.js"></script>  
+  
+    <script src="../resources/js/jquery.min.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>  
+  
+   
   <script src="../resources/js/bootstrap.min.js"></script>  
 </body>  
 </html>
